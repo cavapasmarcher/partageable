@@ -1,6 +1,10 @@
 
 #include "Composant1.h"
 #include "Composant1Version.h"
+#include "Composant3.h"
+#include "String.h"
+#include "stdio.h"
+#include <stdlib.h> 
 
 // declaration des fonctions internes
 int addition_interne(int a1, int a2);
@@ -9,7 +13,7 @@ int addition_interne(int a1, int a2);
 
 int composant1(int p1, int p2)
 {
-	return addition_interne(p1,p2);
+	return composant3(p1,p2);
 }
 
 int addition_interne(int a1, int a2)
@@ -19,5 +23,10 @@ int addition_interne(int a1, int a2)
 
 char * getComposant1Version()
 {
-	return "Composant 1 version " COMPOSANT_VERSION_STR;
+	char* version3 = getComposant3Version();
+	char* version1 = "Composant 1 version " COMPOSANT_VERSION_STR;
+	char* version  = (char*)malloc(strlen(version1) + strlen(version3));
+	strcpy(version, version1);
+	strcat(version,version3);
+	return  version;
 }
